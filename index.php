@@ -36,20 +36,67 @@ if (isset($_GET['get_messages']) && $currentEndpoint) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webhook Tester</title>
+    <title>nona.run | Free Webhook Testing Tool for Developers</title>
+    <meta name="description" content="nona.run is a free webhook testing tool that helps developers test, debug and monitor HTTP webhooks and API callbacks. Simple, fast, and reliable webhook testing platform.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nona.run/">
+    <meta property="og:title" content="nona.run - Webhook Testing Tool for Developers">
+    <meta property="og:description" content="Test and debug your webhooks easily with nona.run. Real-time webhook testing, request inspection, and API callback monitoring for developers.">
+    <meta property="og:image" content="https://nona.run/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nona.run/">
+    <meta property="twitter:title" content="nona.run - Webhook Testing Made Simple">
+    <meta property="twitter:description" content="Test and debug your webhooks easily with nona.run. Real-time webhook testing, request inspection, and API callback monitoring for developers.">
+    <meta property="twitter:image" content="https://nona.run/twitter-image.jpg">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="keywords" content="webhook tester, webhook testing tool, webhook debugger, HTTP webhook testing, API callback testing, webhook monitor, developer tools, webhook debugging, API testing">
+    <meta name="author" content="nona.run">
+    <meta name="robots" content="index, follow">
+    <meta name="canonical" content="https://nona.run/">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "nona.run",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "url": "https://nona.run",
+        "description": "A free webhook testing tool for developers to test and debug HTTP webhooks and API callbacks",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "features": [
+            "Real-time webhook testing",
+            "Request inspection",
+            "API callback monitoring",
+            "Developer-friendly interface"
+        ]
+    }
+    </script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Webhook Tester</h1>
+            <h1>Nona.run</h1>
             <form method="post" class="create-endpoint">
                 <input type="hidden" name="action" value="create_endpoint">
                 <button type="submit">Create New Endpoint</button>
             </form>
         </header>
 
-        <div class="endpoints">
+        <h2>A free webhook testing tool for developers to test and debug HTTP webhooks and API callbacks</h2>
+
+        <div class="endpoints" style="margin-top:40px">
             <h2>Your Endpoints</h2>
             <div class="endpoint-list">
                 <?php foreach ($endpoints as $endpoint): ?>
@@ -86,6 +133,10 @@ if (isset($_GET['get_messages']) && $currentEndpoint) {
         </div>
         <?php endif; ?>
     </div>
+
+    <footer style="text-align: center; margin-top: 20px;">
+        <p>nona.run is developed by <a href="https://www.nicecoder.com" target="_blank">nicecoder.com</a> &copy; <?php echo date("Y"); ?></p>
+    </footer>
 
     <script>
         const currentEndpoint = <?= json_encode($currentEndpoint) ?>;
