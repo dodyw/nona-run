@@ -45,6 +45,42 @@ function saveEndpoint($session, $endpoint) {
     $stmt->execute();
 }
 
+function deleteEndpoint($session, $endpoint) {
+    $db = getDB();
+    
+    // First verify the endpoint belongs to this session
+    $stmt = $db->prepare('SELECT 1 FROM endpoints WHERE id = ? AND session_id = ?');
+    $stmt->bindValue(1, $endpoint, SQLITE3_TEXT);
+    $stmt->bindValue(2, $session, SQLITE3_TEXT);
+    $result = $stmt->execute();
+    
+    if (!$result->fetchArray()) {
+        return false;
+    }
+    
+    // Begin transaction
+    $db->exec('BEGIN');
+    
+    try {
+        // Delete messages first
+        $stmt = $db->prepare('DELETE FROM messages WHERE endpoint_id = ?');
+        $stmt->bindValue(1, $endpoint, SQLITE3_TEXT);
+        $stmt->execute();
+        
+        // Then delete the endpoint
+        $stmt = $db->prepare('DELETE FROM endpoints WHERE id = ? AND session_id = ?');
+        $stmt->bindValue(1, $endpoint, SQLITE3_TEXT);
+        $stmt->bindValue(2, $session, SQLITE3_TEXT);
+        $stmt->execute();
+        
+        $db->exec('COMMIT');
+        return true;
+    } catch (Exception $e) {
+        $db->exec('ROLLBACK');
+        return false;
+    }
+}
+
 function getMessages($endpoint) {
     $db = getDB();
     

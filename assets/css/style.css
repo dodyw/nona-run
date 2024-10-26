@@ -53,6 +53,12 @@ button:hover {
     margin-top: 10px;
 }
 
+.endpoint-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .endpoint {
     background: white;
     padding: 10px 15px;
@@ -65,6 +71,30 @@ button:hover {
 .endpoint.active {
     background: #3498db;
     color: white;
+}
+
+.delete-endpoint {
+    display: inline;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
 }
 
 .endpoint-details {
