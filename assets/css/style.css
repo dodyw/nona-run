@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.endpoints {
+    margin-bottom: 30px;
+}
+
+.endpoint-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.endpoint {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.endpoint.active {
+    background: #3498db;
+    color: white;
+}
+
+.endpoint-details {
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.endpoint-url {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.endpoint-url code {
+    flex: 1;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.message-count {
+    margin-top: 10px;
+    color: #666;
+}
+
+.messages {
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.message {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.message-header {
+    padding: 10px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-content {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.message-content.active {
+    display: block;
+}
+
+.message-content pre {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.message-content h3 {
+    color: #2c3e50;
+    margin-top: 15px;
+}
+
+.timestamp {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.method {
+    font-weight: bold;
+}
+
+.method.GET { color: #27ae60; }
+.method.POST { color: #e67e22; }
+.method.PUT { color: #3498db; }
+.method.DELETE { color: #e74c3c; }
