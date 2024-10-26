@@ -55,22 +55,22 @@ function getMessages($endpoint) {
     $count = $result->fetchArray(SQLITE3_ASSOC)['count'];
     
     if ($count > MAX_MESSAGES) {
-        // Delete excess messages
+        // Delete oldest messages when limit is exceeded
         $stmt = $db->prepare('
             DELETE FROM messages 
             WHERE id IN (
                 SELECT id FROM messages 
                 WHERE endpoint_id = ? 
-                ORDER BY timestamp DESC 
-                LIMIT -1 OFFSET ?
+                ORDER BY timestamp ASC 
+                LIMIT ?
             )
         ');
         $stmt->bindValue(1, $endpoint, SQLITE3_TEXT);
-        $stmt->bindValue(2, MAX_MESSAGES, SQLITE3_INTEGER);
+        $stmt->bindValue(2, $count - MAX_MESSAGES, SQLITE3_INTEGER);
         $stmt->execute();
     }
     
-    // Get messages
+    // Get messages in reverse chronological order
     $stmt = $db->prepare('
         SELECT method, headers, query, body, timestamp 
         FROM messages 

@@ -105,6 +105,11 @@ button:hover {
     border-radius: 4px;
     margin-bottom: 10px;
     cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.message:hover {
+    transform: translateX(5px);
 }
 
 .message-header {
@@ -112,6 +117,7 @@ button:hover {
     background: #f8f9fa;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .message-content {
@@ -130,6 +136,8 @@ button:hover {
     border-radius: 4px;
     overflow-x: auto;
     margin: 10px 0;
+    font-family: monospace;
+    font-size: 13px;
 }
 
 .message-content h3 {
@@ -144,9 +152,44 @@ button:hover {
 
 .method {
     font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: white;
 }
 
-.method.GET { color: #27ae60; }
-.method.POST { color: #e67e22; }
-.method.PUT { color: #3498db; }
-.method.DELETE { color: #e74c3c; }
+/* Method colors */
+.method.GET {
+    background-color: #27ae60;
+}
+
+.method.POST {
+    background-color: #e67e22;
+}
+
+.method.PUT {
+    background-color: #3498db;
+}
+
+.method.DELETE {
+    background-color: #e74c3c;
+}
+
+.method.PATCH {
+    background-color: #9b59b6;
+}
+
+.method.HEAD {
+    background-color: #95a5a6;
+}
+
+.method.OPTIONS {
+    background-color: #34495e;
+}
+
+.method.TRACE {
+    background-color: #1abc9c;
+}
+
+.method.CONNECT {
+    background-color: #2ecc71;
+}
